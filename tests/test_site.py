@@ -49,6 +49,7 @@ class PageParser(HTMLParser):
         self.json_ld = 0
         self.has_icon = False
         self.photo_slots = 0
+        self.hero_blocks = []
         self.community_entries = 0
 
     def handle_starttag(self, tag, attrs):
@@ -71,6 +72,8 @@ class PageParser(HTMLParser):
             self.claims.add(claim)
         if "data-photo-slot" in attributes:
             self.photo_slots += 1
+        if attributes.get("data-hero-block"):
+            self.hero_blocks.append(attributes["data-hero-block"])
         if "data-community-entry" in attributes:
             self.community_entries += 1
         for attribute in ("href", "src"):
@@ -158,6 +161,16 @@ class PortfolioContractTests(unittest.TestCase):
         with Image.open(ROOT / "assets/lifestyle-brandeis.webp") as photo:
             self.assertEqual(photo.size, (1008, 1344))
             self.assertEqual(len(photo.getexif()), 0)
+
+    def test_home_hero_places_summary_left_of_photo_and_preserves_mobile_order(self):
+        for relative_path in (Path("index.html"), Path("zh/index.html")):
+            with self.subTest(path=relative_path):
+                _, page = parse_page(relative_path)
+                self.assertEqual(page.hero_blocks, ["identity", "photo", "summary"])
+
+        css = (ROOT / "assets/styles.css").read_text(encoding="utf-8")
+        self.assertIn('"identity photo"\n    "summary photo"', css)
+        self.assertIn('"identity"\n      "photo"\n      "summary"', css)
 
     def test_project_pages_link_directly_to_real_products(self):
         expected = {

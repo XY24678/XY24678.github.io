@@ -163,9 +163,17 @@ h3 {
 .identity {
   display: grid;
   grid-template-columns: minmax(0, 1fr) 280px;
-  gap: 72px;
+  grid-template-areas:
+    "identity photo"
+    "summary photo";
+  column-gap: 72px;
+  row-gap: 36px;
   align-items: start;
   padding-bottom: 56px;
+}
+
+.identity-copy {
+  grid-area: identity;
 }
 
 .role {
@@ -191,6 +199,7 @@ h3 {
 }
 
 .profile-photo {
+  grid-area: photo;
   width: 100%;
   height: auto;
   aspect-ratio: 4 / 5;
@@ -198,6 +207,14 @@ h3 {
   object-fit: cover;
   border: 1px solid var(--line);
   border-radius: 5px;
+}
+
+.identity-summary {
+  grid-area: summary;
+}
+
+.identity-summary > :last-child {
+  margin-bottom: 0;
 }
 
 .resume-section {
@@ -378,7 +395,7 @@ h3 {
 
 @media (max-width: 900px) {
   .identity {
-    gap: 44px;
+    column-gap: 44px;
   }
 
   .experience-item,
@@ -430,6 +447,10 @@ h3 {
   }
 
   .identity {
+    grid-template-areas:
+      "identity"
+      "photo"
+      "summary";
     gap: 32px;
     padding-bottom: 44px;
   }

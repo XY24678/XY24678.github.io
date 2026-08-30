@@ -190,19 +190,14 @@ h3 {
   color: var(--quiet);
 }
 
-.photo-placeholder {
+.profile-photo {
   width: 100%;
+  height: auto;
   aspect-ratio: 4 / 5;
-  display: grid;
-  place-items: center;
+  display: block;
+  object-fit: cover;
   border: 1px solid var(--line);
   border-radius: 5px;
-  background: var(--soft);
-  color: var(--quiet);
-  font-size: 0.76rem;
-  letter-spacing: 0.08em;
-  text-align: center;
-  text-transform: uppercase;
 }
 
 .resume-section {
@@ -439,7 +434,7 @@ h3 {
     padding-bottom: 44px;
   }
 
-  .photo-placeholder {
+  .profile-photo {
     width: min(56vw, 210px);
   }
 

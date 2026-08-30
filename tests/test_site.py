@@ -28,6 +28,7 @@ REQUIRED_ASSETS = (
     Path("assets/styles.css"),
     Path("assets/favicon.svg"),
     Path("assets/og-card.svg"),
+    Path("assets/lifestyle-brandeis.webp"),
     Path("assets/Xi_Yu_AI_Product_Manager_Resume_EN.pdf"),
 )
 FACT_ID = re.compile(r"\b(?:BGG|AIO|CTH|PAL|VIP|SOHU|EDU|COMM|RUN|VOL|SKILL)-\d+\b")
@@ -130,6 +131,21 @@ class PortfolioContractTests(unittest.TestCase):
                 _, page = parse_page(relative_path)
                 self.assertEqual(page.json_ld, 1)
                 self.assertEqual(page.photo_slots, 1)
+
+    def test_home_pages_render_lifestyle_photo(self):
+        for relative_path in (Path("index.html"), Path("zh/index.html")):
+            with self.subTest(path=relative_path):
+                source, page = parse_page(relative_path)
+                photos = [
+                    (url, attributes)
+                    for tag, attribute, url, attributes in page.links
+                    if tag == "img" and attribute == "src" and "data-photo-slot" in attributes
+                ]
+                self.assertEqual(len(photos), 1)
+                self.assertEqual(photos[0][0], "assets/lifestyle-brandeis.webp" if relative_path.parent == Path(".") else "../assets/lifestyle-brandeis.webp")
+                self.assertTrue(photos[0][1].get("alt"))
+                self.assertNotIn("photo<br>to be added", source)
+                self.assertNotIn("生活照片<br>待补充", source)
 
     def test_project_pages_link_directly_to_real_products(self):
         expected = {

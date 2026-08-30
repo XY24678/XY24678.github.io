@@ -4,6 +4,8 @@ from html.parser import HTMLParser
 from pathlib import Path
 from urllib.parse import unquote, urlsplit
 
+from PIL import Image
+
 
 ROOT = Path(__file__).resolve().parents[1]
 PAGES = (
@@ -151,6 +153,11 @@ class PortfolioContractTests(unittest.TestCase):
         css = (ROOT / "assets/styles.css").read_text(encoding="utf-8")
         self.assertIn("grid-template-columns: minmax(0, 1fr) 280px;", css)
         self.assertIn("width: min(56vw, 210px);", css)
+
+    def test_lifestyle_photo_is_cropped_without_metadata(self):
+        with Image.open(ROOT / "assets/lifestyle-brandeis.webp") as photo:
+            self.assertEqual(photo.size, (1008, 1344))
+            self.assertEqual(len(photo.getexif()), 0)
 
     def test_project_pages_link_directly_to_real_products(self):
         expected = {

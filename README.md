@@ -25,9 +25,9 @@ Open `http://localhost:8000/` for the English resume or `http://localhost:8000/z
 python -m unittest discover -s tests -v
 ```
 
-The site uses relative internal URLs and can run under a GitHub Pages project subpath. No Git repository, remote, deployment, or GitHub Pages configuration has been created.
+The site uses relative internal URLs and is published from the `main` branch with GitHub Pages at [xy24678.github.io](https://xy24678.github.io/).
 
-## Pending real assets
+## Current assets
 
-- One user-provided lifestyle photo in a 4:5 crop
-- A Chinese PDF resume, if the Chinese page should offer a language-matched download
+- User-provided lifestyle photo, cropped and optimized for the web
+- English PDF resume linked from both language versions

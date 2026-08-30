@@ -184,6 +184,20 @@ class PortfolioContractTests(unittest.TestCase):
                 urls = {url for tag, _, url, _ in page.links if tag == "a"}
                 self.assertTrue(expected.issubset(urls))
 
+    def test_project_pages_avoid_internal_governance_language(self):
+        forbidden = (
+            "verified product status",
+            "verified work",
+            "真实产品状态",
+            "已确认工作",
+            "真实公开链接",
+        )
+        for relative_path in (Path("projects/index.html"), Path("zh/projects/index.html")):
+            with self.subTest(path=relative_path):
+                source, _ = parse_page(relative_path)
+                for phrase in forbidden:
+                    self.assertNotIn(phrase, source.lower())
+
     def test_community_sections_use_resume_entries(self):
         for relative_path in (Path("index.html"), Path("zh/index.html")):
             with self.subTest(path=relative_path):

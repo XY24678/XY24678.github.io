@@ -1,0 +1,11 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="630" viewBox="0 0 1200 630" role="img" aria-labelledby="title description">
+  <title id="title">XI YU — AI Product Manager</title>
+  <desc id="description">A restrained social card for XI YU's online resume.</desc>
+  <rect width="1200" height="630" fill="#ffffff"/>
+  <line x1="96" y1="104" x2="96" y2="526" stroke="#2f5d8a" stroke-width="6"/>
+  <text x="152" y="178" fill="#2f5d8a" font-family="Arial, sans-serif" font-size="24" font-weight="700" letter-spacing="4">AI PRODUCT RESUME</text>
+  <text x="152" y="306" fill="#172033" font-family="Arial, sans-serif" font-size="94" font-weight="700">XI YU</text>
+  <text x="152" y="384" fill="#5f6878" font-family="Arial, sans-serif" font-size="38">AI Product Manager</text>
+  <text x="152" y="448" fill="#5f6878" font-family="Arial, sans-serif" font-size="28">Product delivery · Business growth · Applied AI</text>
+  <text x="152" y="510" fill="#7d8593" font-family="Arial, sans-serif" font-size="22">Boston, Massachusetts</text>
+</svg>

@@ -147,6 +147,11 @@ class PortfolioContractTests(unittest.TestCase):
                 self.assertNotIn("photo<br>to be added", source)
                 self.assertNotIn("生活照片<br>待补充", source)
 
+    def test_profile_photo_is_larger_on_desktop_and_compact_on_mobile(self):
+        css = (ROOT / "assets/styles.css").read_text(encoding="utf-8")
+        self.assertIn("grid-template-columns: minmax(0, 1fr) 280px;", css)
+        self.assertIn("width: min(56vw, 210px);", css)
+
     def test_project_pages_link_directly_to_real_products(self):
         expected = {
             "https://www.bosgogo.com/",

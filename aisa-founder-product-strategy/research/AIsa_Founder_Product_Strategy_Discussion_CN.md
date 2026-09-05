@@ -1,6 +1,6 @@
 # 对 AIsa 产品与增长的四点观察
 
-对照 Monid、Orthogonal、Nevermined｜2026-09-05
+对照 Monid、Orthogonal、Nevermined｜2026-09-04
 
 我围绕四家平台的官网、接入文档、Skills、API 目录与公开传播记录做了对比。我的核心判断是：**AIsa 已经通过统一入口降低了多供应商接入与结算的成本，下一步更值得解决的是：用户和 Agent 如何选对服务，并持续获得可靠结果。**
 

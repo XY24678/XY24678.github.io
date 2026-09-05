@@ -12,7 +12,7 @@
 
 | 平台 | 对外主线 | 我认为值得借鉴的地方 |
 |---|---|---|
-| AIsa | 模型、数据 API、Skills、GTM、支付等多个入口 | 资源丰富，但需要明确哪个场景是用户的第一站 |
+| AIsa | 模型、数据 API、Skills、GTM、AIsa CIO、支付等多个入口 | 资源丰富，但需要明确哪个场景是用户的第一站 |
 | Monid | Discover → Inspect → Run | 从“不知道该用什么工具”开始，直接解释使用路径 |
 | Orthogonal | Discover → Call → Pay | 用联系人查询等具体示例，让用户快速理解价值 |
 | Nevermined | For Agents / For Merchants | 按买方和卖方组织能力，预算授权与收款价值清晰 |
